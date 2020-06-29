@@ -2,7 +2,6 @@ package pers.hugh.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -43,6 +42,6 @@ public class BinaryTreeInorderTraversal {
         }
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
     }
 }
