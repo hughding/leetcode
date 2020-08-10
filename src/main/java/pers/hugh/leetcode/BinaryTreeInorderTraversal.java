@@ -3,7 +3,6 @@ package pers.hugh.leetcode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.TreeMap;
 
 
 /**
@@ -51,7 +50,7 @@ public class BinaryTreeInorderTraversal {
     }
 
     /**
-     * 非递归算法
+     * 非递归算法,中序遍历
      *
      * @param root
      * @return
@@ -73,6 +72,57 @@ public class BinaryTreeInorderTraversal {
         return result;
     }
 
+    /**
+     * 非递归算法,前序遍历
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> preorderNoRecursion(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = root;
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                result.add(node.val);
+                stack.push(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            node = node.right;
+        }
+
+        return result;
+    }
+
+    /**
+     * 非递归算法,后序遍历
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> postorderNoRecursion(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = root;
+        TreeNode preMid = null;
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+            if (preMid != null) {
+                stack.push(preMid);
+            }
+            preMid = stack.pop();
+            if (preMid.right != null) {
+                node = preMid.right;
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1, null, null);
         root.left = new TreeNode(4, null, new TreeNode(5, null, null));
@@ -81,5 +131,6 @@ public class BinaryTreeInorderTraversal {
         BinaryTreeInorderTraversal solution = new BinaryTreeInorderTraversal();
         System.out.println(solution.inorderTraversal(root));
         System.out.println(solution.inorderNoRecursion(root));
+        System.out.println(solution.postorderNoRecursion(root));
     }
 }
