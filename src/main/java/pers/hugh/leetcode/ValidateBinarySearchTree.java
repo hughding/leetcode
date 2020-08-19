@@ -71,6 +71,23 @@ public class ValidateBinarySearchTree {
         }
     }
 
+    //有问题
+    public boolean isValidBST2(TreeNode root) {
+        if(root == null){
+            return true;
+        }
+        if(root.left == null && root.right == null){
+            return true;
+        }
+        if(root.left != null && root.right == null){
+            return root.val > root.left.val;
+        }
+        if(root.left == null && root.right != null){
+            return root.val < root.right.val;
+        }
+        boolean curIsValid = root.val > root.left.val && root.val < root.right.val;
+        return curIsValid && isValidBST2(root.left) && isValidBST2(root.right);
+    }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(2, null, null);
@@ -79,10 +96,12 @@ public class ValidateBinarySearchTree {
 
         ValidateBinarySearchTree solution = new ValidateBinarySearchTree();
         System.out.println(solution.isValidBST(root));
+        System.out.println(solution.isValidBST2(root));
 
         TreeNode root2 = new TreeNode(5, null, null);
         root2.left = new TreeNode(1, null, null);
         root2.right = new TreeNode(4, new TreeNode(3, null, null), new TreeNode(6, null, null));
         System.out.println(solution.isValidBST(root2));
+        System.out.println(solution.isValidBST2(root2));
     }
 }
