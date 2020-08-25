@@ -16,7 +16,7 @@ public class MaximumSubarray {
 //
 //    If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
-    //dp[i] = max(ap[i-1], 0) + num[i]
+    //dp[i] = max(dp[i-1], 0) + num[i]
     public int maxSubArray(int[] nums) {
         int[] dp = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
