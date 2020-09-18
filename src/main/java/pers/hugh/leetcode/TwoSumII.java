@@ -23,7 +23,7 @@ public class TwoSumII {
         int i = 0;
         int j = numbers.length - 1;
 
-        while (i < j && numbers[i] != numbers[j]) {
+        while (i < j) {
             int sum = numbers[i] + numbers[j];
             if (sum == target) {
                 break;
