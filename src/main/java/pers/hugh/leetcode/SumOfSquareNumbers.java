@@ -14,7 +14,7 @@ public class SumOfSquareNumbers {
 
     public boolean judgeSquareSum(int c) {
         int i = 0;
-        int j = c;
+        int j = (int)Math.sqrt(c);
         boolean has = false;
 
         while (i <= j) {
@@ -37,5 +37,6 @@ public class SumOfSquareNumbers {
         System.out.println(solution.judgeSquareSum(1));
         System.out.println(solution.judgeSquareSum(5));
         System.out.println(solution.judgeSquareSum(3));
+        System.out.println(solution.judgeSquareSum(1000000));
     }
 }
