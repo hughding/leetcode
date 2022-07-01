@@ -4,7 +4,7 @@ package pers.hugh.dp;
  * ????
  * @author dingxiuzheng
  */
-public class DivisorGame {
+public class DivisorGame_ {
     //    1025. Divisor Game
 //
 //    Alice and Bob take turns playing a game, with Alice starting first.
@@ -45,9 +45,9 @@ public class DivisorGame {
     }
 
     public static void main(String[] args) {
-        System.out.println(new DivisorGame().divisorGame(2));
-        System.out.println(new DivisorGame().divisorGame(3));
-        System.out.println(new DivisorGame().divisorGame(4));
-        System.out.println(new DivisorGame().divisorGame(8));
+        System.out.println(new DivisorGame_().divisorGame(2));
+        System.out.println(new DivisorGame_().divisorGame(3));
+        System.out.println(new DivisorGame_().divisorGame(4));
+        System.out.println(new DivisorGame_().divisorGame(8));
     }
 }
