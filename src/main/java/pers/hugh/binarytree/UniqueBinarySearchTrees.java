@@ -1,4 +1,4 @@
-package pers.hugh.leetcode;
+package pers.hugh.binarytree;
 
 /**
  * @author hughding

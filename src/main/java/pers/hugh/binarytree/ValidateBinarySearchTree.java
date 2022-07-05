@@ -1,4 +1,4 @@
-package pers.hugh.leetcode;
+package pers.hugh.binarytree;
 
 import java.util.ArrayList;
 import java.util.List;
