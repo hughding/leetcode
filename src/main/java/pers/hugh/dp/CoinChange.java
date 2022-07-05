@@ -80,11 +80,6 @@ public class CoinChange {
             dp[i] = amount + 1;
         }
         dp[0] = 0;
-        for (int coin : coins) {
-            if(coin < amount){
-                dp[coin] = 1;
-            }
-        }
         for (int i = 1; i < amount + 1; i++) {
             for (int coin : coins) {
                 if (i - coin >= 0) {
