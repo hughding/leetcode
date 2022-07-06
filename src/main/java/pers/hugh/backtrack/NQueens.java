@@ -1,6 +1,7 @@
-package pers.hugh.leetcode;
+package pers.hugh.backtrack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,7 +49,7 @@ public class NQueens {
         }
         for (int i = 0; i < n; i++) {
             boolean ok = true;
-            if (row > 0){
+            if (row > 0) {
                 //和上行在同一列
                 //和上行在对角线1
                 //和上行在对角线2
@@ -85,9 +86,75 @@ public class NQueens {
         return result;
     }
 
+
+    //回溯法
+    List<List<String>> resultList;
+
+    public List<List<String>> solveNQueens2(int n) {
+        resultList = new ArrayList<>();
+        char[][] board = new char[n][n];
+        for (int i = 0; i < board.length; i++) {
+            Arrays.fill(board[i], '.');
+        }
+        backtrack(n, board, 0);
+        return resultList;
+    }
+
+    public void backtrack(int n, char[][] board, int row) {
+        if (row == n) {
+            List<String> result = new ArrayList<>();
+            for (char[] boardRow : board) {
+                result.add(String.valueOf(boardRow));
+            }
+            resultList.add(result);
+        }
+
+        for (int i = 0; i < n; i++) {
+            //校验无效位置
+            if (!isValid(board, row, i)) {
+                continue;
+            }
+            board[row][i] = 'Q';
+            backtrack(n, board, row + 1);
+            board[row][i] = '.';
+        }
+
+    }
+
+    public boolean isValid(char[][] board, int row, int col) {
+        //校验正上方
+        for (int i = 0; i < row; i++) {
+            if (board[i][col] == 'Q') {
+                return false;
+            }
+        }
+        //校验左上方
+        int i = row - 1;
+        int j = col - 1;
+        while (i >= 0 && j >= 0) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+            i--;
+            j--;
+        }
+        //校验右上方
+        i = row - 1;
+        j = col + 1;
+        while (i >= 0 && j < board[i].length) {
+            if (board[i][j] == 'Q') {
+                return false;
+            }
+            i--;
+            j++;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         NQueens solution = new NQueens();
         printResult(solution.solveNQueens(4));
+        printResult(solution.solveNQueens2(4));
     }
 
     private static void printResult(List<List<String>> resultList) {
