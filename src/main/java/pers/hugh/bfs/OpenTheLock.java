@@ -80,7 +80,7 @@ public class OpenTheLock {
         if (deadendsSet.contains(cur)) {
             return;
         }
-        if (visitedStepMap.containsKey(cur) && visitedStepMap.get(cur) < step) {
+        if (visitedStepMap.containsKey(cur) && visitedStepMap.get(cur) <= step) {
             return;
         }
         if (target.equals(cur)) {
