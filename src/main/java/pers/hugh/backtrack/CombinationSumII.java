@@ -36,7 +36,7 @@ public class CombinationSumII {
         }
 
         for (int i = start; i < candidates.length; i++) {
-            if (i > 0 && i > start && candidates[i] == candidates[i - 1]) {
+            if ( i > start && candidates[i] == candidates[i - 1]) {
                 continue;
             }
             sum += candidates[i];
