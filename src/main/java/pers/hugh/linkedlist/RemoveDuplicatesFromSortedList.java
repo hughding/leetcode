@@ -17,11 +17,10 @@ public class RemoveDuplicatesFromSortedList {
             if (fast.val != slow.val) {
                 slow.next = fast;
                 slow = slow.next;
-            }else{
-                slow.next = fast.next;
             }
             fast = fast.next;
         }
+        slow.next = null;
         return head;
     }
 
