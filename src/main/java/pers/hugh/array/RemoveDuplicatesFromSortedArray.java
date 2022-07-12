@@ -4,10 +4,12 @@ import java.util.Arrays;
 
 /**
  * @author dingxiuzheng
+ * @see pers.hugh.linkedlist.RemoveDuplicatesFromSortedList
  */
 public class RemoveDuplicatesFromSortedArray {
 
     //26. Remove Duplicates from Sorted Array
+    //same as RemoveDuplicatesFromSortedList
     //https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
     public int removeDuplicates(int[] nums) {
@@ -29,8 +31,8 @@ public class RemoveDuplicatesFromSortedArray {
     public int removeDuplicates2(int[] nums) {
         int slow = 0;
         int fast = 0;
-        while (fast < nums.length){
-            if(nums[slow] != nums[fast]){
+        while (fast < nums.length) {
+            if (nums[slow] != nums[fast]) {
                 slow++;
                 nums[slow] = nums[fast];
             }
