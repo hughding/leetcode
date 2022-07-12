@@ -98,14 +98,14 @@ public class OpenTheLock {
     }
 
     public static void main(String[] args) {
-//        System.out.println(new OpenTheLock().openLock(
-//                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-//        System.out.println(new OpenTheLock().openLock2(
-//                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-//        System.out.println(new OpenTheLock().openLock(
-//                new String[]{"8888"}, "0009"));
-//        System.out.println(new OpenTheLock().openLock2(
-//                new String[]{"8888"}, "0009"));
+        System.out.println(new OpenTheLock().openLock(
+                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+        System.out.println(new OpenTheLock().openLock2(
+                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+        System.out.println(new OpenTheLock().openLock(
+                new String[]{"8888"}, "0009"));
+        System.out.println(new OpenTheLock().openLock2(
+                new String[]{"8888"}, "0009"));
         System.out.println(new OpenTheLock().openLock(
                 new String[]{"0000"}, "0009"));
         System.out.println(new OpenTheLock().openLock2(
