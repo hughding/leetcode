@@ -73,7 +73,7 @@ public class OpenTheLock {
         Set<String> deadendsSet = new HashSet<>(Arrays.asList(deadends));
         Map<String, Integer> visitedStepMap = new HashMap<>();
         backtrack("0000", target, deadendsSet, visitedStepMap, 0);
-        return minStep;
+        return minStep == Integer.MAX_VALUE ? -1 : minStep;
     }
 
     public void backtrack(String cur, String target, Set<String> deadendsSet, Map<String, Integer> visitedStepMap, int step) {
@@ -98,13 +98,17 @@ public class OpenTheLock {
     }
 
     public static void main(String[] args) {
+//        System.out.println(new OpenTheLock().openLock(
+//                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+//        System.out.println(new OpenTheLock().openLock2(
+//                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+//        System.out.println(new OpenTheLock().openLock(
+//                new String[]{"8888"}, "0009"));
+//        System.out.println(new OpenTheLock().openLock2(
+//                new String[]{"8888"}, "0009"));
         System.out.println(new OpenTheLock().openLock(
-                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
+                new String[]{"0000"}, "0009"));
         System.out.println(new OpenTheLock().openLock2(
-                new String[]{"0201", "0101", "0102", "1212", "2002"}, "0202"));
-        System.out.println(new OpenTheLock().openLock(
-                new String[]{"8888"}, "0009"));
-        System.out.println(new OpenTheLock().openLock2(
-                new String[]{"8888"}, "0009"));
+                new String[]{"0000"}, "0009"));
     }
 }
