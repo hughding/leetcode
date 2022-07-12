@@ -32,11 +32,17 @@ public class ListNode {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         ListNode l = this;
-        while (l != null) {
+        //计算次数，防止出现环
+        int i = 0;
+        while (l != null && i <= 100) {
             sb.append(l.val);
             sb.append(",");
             l = l.next;
+            i++;
         }
-        return sb.substring(0, sb.length() - 1).toString();
+        if (i == 100) {
+            sb.append("链表可能有环");
+        }
+        return sb.substring(0, sb.length() - 1);
     }
 }
