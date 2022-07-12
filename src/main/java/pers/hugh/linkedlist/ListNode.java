@@ -14,6 +14,15 @@ public class ListNode {
         this.val = val;
     }
 
+    ListNode(int... vals) {
+        this.val = vals[0];
+        ListNode p = this;
+        for (int i = 1; i < vals.length; i++) {
+            p.next = new ListNode(vals[i]);
+            p = p.next;
+        }
+    }
+
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
