@@ -1,4 +1,4 @@
-package pers.hugh.binarysearch;
+package pers.hugh.array.binarysearch;
 
 /**
  * @author dingxiuzheng
