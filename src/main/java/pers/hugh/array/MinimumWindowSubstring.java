@@ -64,9 +64,12 @@ public class MinimumWindowSubstring {
         while (right < s.length()) {
             char c = s.charAt(right);
             right++;
-            window.put(c, window.getOrDefault(c, 0) + 1);
-            if (intEquals(need.get(c), window.get(c))) {
-                valid++;
+
+            if(need.containsKey(c)){
+                window.put(c, window.getOrDefault(c, 0) + 1);
+                if (intEquals(need.get(c), window.get(c))) {
+                    valid++;
+                }
             }
             System.out.println("window:" + s.substring(left, right));
             while (valid == need.size()) {
@@ -79,9 +82,12 @@ public class MinimumWindowSubstring {
 
                 char d = s.charAt(left);
                 left++;
-                window.put(d, window.getOrDefault(d, 1) - 1);
-                if (need.containsKey(d) && need.get(d).compareTo(window.get(d)) > 0){
-                    valid--;
+
+                if(need.containsKey(d)){
+                    if(intEquals(need.get(d), window.get(d))){
+                        valid--;
+                    }
+                    window.put(d, window.getOrDefault(d, 1) - 1);
                 }
             }
         }
@@ -96,13 +102,13 @@ public class MinimumWindowSubstring {
     }
 
     public static void main(String[] args) {
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow("ADOBECODEBANC", "ABC"));
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow("a", "a"));
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow("bba", "ab"));
-//        System.out.println("===================================");
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("ADOBECODEBANC", "ABC"));
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("a", "a"));
-//        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("bba", "ab"));
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow("ADOBECODEBANC", "ABC"));
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow("a", "a"));
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow("bba", "ab"));
+        System.out.println("===================================");
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("ADOBECODEBANC", "ABC"));
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("a", "a"));
+        System.out.println("result:" + new MinimumWindowSubstring().minWindow2("bba", "ab"));
         System.out.println("result:" + new MinimumWindowSubstring().minWindow2("aaaaaaaaaaaabbbbbcdd", "abcdd"));
     }
 }
