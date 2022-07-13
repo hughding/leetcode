@@ -52,7 +52,7 @@ public class LongestPalindromicSubstring {
     //dp[i,j] = dp[i+1,j-1] && s[i] == s[j]
     public String longestPalindromeOpt(String s) {
         int n = s.length();
-        if(n == 0){
+        if (n == 0) {
             return s;
         }
 
@@ -64,9 +64,9 @@ public class LongestPalindromicSubstring {
                     dp[i][j] = true;
                 }
                 if (i == 0 && j > 0) {
-                    if(j > 1){
+                    if (j > 1) {
                         dp[i][j] = dp[1][j - 1] && s.charAt(0) == s.charAt(j);
-                    }else{
+                    } else {
                         dp[i][j] = s.charAt(i) == s.charAt(j);
                     }
                 }
@@ -78,7 +78,7 @@ public class LongestPalindromicSubstring {
                         dp[i][j] = dp[i + 1][j - 1] && s.charAt(i) == s.charAt(j);
                     } else if (i <= j) {
                         dp[i][j] = s.charAt(i) == s.charAt(j);
-                    }else {
+                    } else {
                         dp[i][j] = false;
                     }
                 }
@@ -99,6 +99,30 @@ public class LongestPalindromicSubstring {
         return s.substring(start, end + 1);
     }
 
+    //双指针
+    public String longestPalindrome3(String s) {
+        String p = "";
+        for (int i = 0; i < s.length(); i++) {
+            String p1 = palindrome(s, i, i + 1);
+            if (p1.length() > p.length()) {
+                p = p1;
+            }
+            String p2 = palindrome(s, i, i);
+            if (p2.length() > p.length()) {
+                p = p2;
+            }
+        }
+        return p;
+    }
+
+    public String palindrome(String s, int l, int r) {
+        while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+            l--;
+            r++;
+        }
+        return s.substring(l + 1, r);
+    }
+
     public static void main(String[] args) {
         LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
         System.out.println(longestPalindromicSubstring.longestPalindrome("babad"));
@@ -111,5 +135,12 @@ public class LongestPalindromicSubstring {
         System.out.println(longestPalindromicSubstring.longestPalindromeOpt("babad"));
         System.out.println(longestPalindromicSubstring.longestPalindromeOpt("cbbd"));
         System.out.println(longestPalindromicSubstring.longestPalindromeOpt("aa"));
+
+
+        System.out.println(longestPalindromicSubstring.longestPalindrome("==============="));
+
+        System.out.println(longestPalindromicSubstring.longestPalindrome3("babad"));
+        System.out.println(longestPalindromicSubstring.longestPalindrome3("cbbd"));
+        System.out.println(longestPalindromicSubstring.longestPalindrome3("aa"));
     }
 }
