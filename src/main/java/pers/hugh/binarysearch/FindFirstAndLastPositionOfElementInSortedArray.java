@@ -48,7 +48,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
                 right = mid - 1;
             }
         }
-        if(right < 0){
+        if (right < 0) {
             return -1;
         }
         return nums[right] == target ? right : -1;
