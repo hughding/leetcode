@@ -1,4 +1,4 @@
-package pers.hugh.array;
+package pers.hugh.array.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
