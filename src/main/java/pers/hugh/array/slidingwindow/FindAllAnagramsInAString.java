@@ -27,18 +27,18 @@ public class FindAllAnagramsInAString {
             if (need.containsKey(c)) {
                 window.put(c, window.getOrDefault(c, 0) + 1);
                 if (need.get(c).equals(window.get(c))) {
-                    valid += need.get(c);
+                    valid++;
                 }
             }
             while (right - left >= p.length()) {
-                if (valid == p.length()) {
+                if (valid == need.size()) {
                     result.add(left);
                 }
                 char d = s.charAt(left);
                 left++;
                 if (need.containsKey(d)) {
                     if (need.get(d).equals(window.get(d))) {
-                        valid -= need.get(d);
+                        valid--;
                     }
                     window.put(d, window.getOrDefault(d, 1) - 1);
                 }
