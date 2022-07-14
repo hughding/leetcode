@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
+ * should practice again
+ *
  * @author dingxiuzheng
  */
 public class PermutationInString {
