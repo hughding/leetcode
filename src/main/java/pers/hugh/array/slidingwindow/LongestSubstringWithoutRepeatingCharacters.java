@@ -1,7 +1,7 @@
-package pers.hugh.leetcode;
+package pers.hugh.array.slidingwindow;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +21,11 @@ public class LongestSubstringWithoutRepeatingCharacters {
 //    Given "bbbbb", the answer is "b", with the length of 1.
 //
 //    Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+//    https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
     /**
      * O(n^3) Time Limit Exceeded
+     *
      * @param s
      * @return
      */
@@ -44,6 +46,26 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return max;
     }
 
+    //滑动窗口 O(N)
+    public int lengthOfLongestSubstringSlidingWindow(String s) {
+        Map<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0;
+        int result = 0;
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            right++;
+            window.put(c, window.getOrDefault(c, 0) + 1);
+
+            while (window.get(c) > 1) {
+                char d = s.charAt(left);
+                left++;
+                window.put(d, window.getOrDefault(d, 1) - 1);
+            }
+            result = Math.max(result, right - left);
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
 
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(""));
@@ -52,5 +74,15 @@ public class LongestSubstringWithoutRepeatingCharacters {
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("abcabcbb"));
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("bbbbb"));
         System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("pwwkew"));
+
+        System.out.println("=============================================");
+
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow(""));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("c"));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("au"));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("abcabcbb"));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("bbbbb"));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("pwwkew"));
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstringSlidingWindow("nfpdmpi"));
     }
 }
