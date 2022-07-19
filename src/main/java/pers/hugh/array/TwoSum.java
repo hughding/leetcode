@@ -1,4 +1,4 @@
-package pers.hugh.leetcode;
+package pers.hugh.array;
 
 import java.util.HashMap;
 import java.util.Map;
