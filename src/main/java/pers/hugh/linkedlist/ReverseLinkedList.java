@@ -58,6 +58,47 @@ public class ReverseLinkedList {
         return dummy.next;
     }
 
+    public ListNode reverseList4(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode p = head;
+        ListNode next = p.next;
+        ListNode nextNext = p.next.next;
+        ListNode newHead = null;
+        while (p != null && next != null) {
+            next.next = p;
+            if (p == head) {
+                p.next = null;
+            }
+            newHead = next;
+
+            p = next;
+            next = nextNext;
+            if (next == null) {
+                break;
+            }
+            nextNext = next.next;
+        }
+
+        return newHead;
+    }
+
+    public ListNode reverseList5(ListNode head) {
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode next = null;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+    }
+
     public static void main(String[] args) {
         System.out.println(new ReverseLinkedList().reverseList(new ListNode(1, 2, 3, 4, 5)));
         System.out.println(new ReverseLinkedList().reverseList(new ListNode(1, 2)));
@@ -68,5 +109,11 @@ public class ReverseLinkedList {
         System.out.println(new ReverseLinkedList().reverseList3(new ListNode(1, 2, 3, 4, 5)));
         System.out.println(new ReverseLinkedList().reverseList3(new ListNode(1, 2)));
         System.out.println(new ReverseLinkedList().reverseList3(null));
+        System.out.println(new ReverseLinkedList().reverseList4(new ListNode(1, 2, 3, 4, 5)));
+        System.out.println(new ReverseLinkedList().reverseList4(new ListNode(1, 2)));
+        System.out.println(new ReverseLinkedList().reverseList4(null));
+        System.out.println(new ReverseLinkedList().reverseList5(new ListNode(1, 2, 3, 4, 5)));
+        System.out.println(new ReverseLinkedList().reverseList5(new ListNode(1, 2)));
+        System.out.println(new ReverseLinkedList().reverseList5(null));
     }
 }
