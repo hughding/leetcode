@@ -1,4 +1,4 @@
-package pers.hugh.array;
+package pers.hugh.array.binarysearch;
 
 import java.util.Random;
 
