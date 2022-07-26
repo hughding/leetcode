@@ -52,6 +52,7 @@ public class AdvantageShuffle {
         }
     }
 
+    //O(NlogN)
     public int[] advantageCount2(int[] nums1, int[] nums2) {
         Queue<int[]> queue = new PriorityQueue<>((a, b) -> b[1] - a[1]);
         for (int i = 0; i < nums2.length; i++) {
