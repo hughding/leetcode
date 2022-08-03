@@ -13,6 +13,7 @@ public class KthLargestElementInAnArray {
 
     //扫描总次数=N + N/2 + N/4 + ... + 1 = 2N (等比数列求和)
     //所以此算法时间复杂度O(N)
+    //快速选择算法
 
     public int findKthLargest(int[] nums, int k) {
         return sort(nums, 0, nums.length - 1, nums.length - k);
