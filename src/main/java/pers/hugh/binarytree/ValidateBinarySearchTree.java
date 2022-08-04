@@ -8,43 +8,18 @@ import java.util.List;
  * @date 2020/8/19 20:08
  **/
 public class ValidateBinarySearchTree {
-//    Given a binary tree, determine if it is a valid binary search tree (BST).
-//
-//    Assume a BST is defined as follows:
-//
-//    The left subtree of a node contains only nodes with keys less than the node's key.
-//    The right subtree of a node contains only nodes with keys greater than the node's key.
-//    Both the left and right subtrees must also be binary search trees.
-//
-//
-//    Example 1:
-//
-//            2
-//            / \
-//            1   3
-//
-//    Input: [2,1,3]
-//    Output: true
-//    Example 2:
-//
-//            5
-//            / \
-//            1   4
-//            / \
-//            3   6
-//
-//    Input: [5,1,4,null,null,3,6]
-//    Output: false
-//    Explanation: The root node's value is 5 but its right child's value is 4.
+
+    //98. Validate Binary Search Tree
+    //https://leetcode.com/problems/validate-binary-search-tree/
 
     public boolean isValidBST(TreeNode root) {
         List<Integer> inorderList = inorderTraversal(root);
         boolean isValidBST = true;
         for (int i = 0; i < inorderList.size(); i++) {
-            if(i < 1){
+            if (i < 1) {
                 continue;
             }
-            if(inorderList.get(i) <= inorderList.get(i -1)){
+            if (inorderList.get(i) <= inorderList.get(i - 1)) {
                 isValidBST = false;
                 break;
             }
@@ -73,20 +48,22 @@ public class ValidateBinarySearchTree {
 
     //有问题
     public boolean isValidBST2(TreeNode root) {
-        if(root == null){
+        return traverseIsValidBST(root, null, null);
+    }
+
+    /* 限定以 root 为根的子树节点必须满足 max.val > root.val > min.val */
+
+    private boolean traverseIsValidBST(TreeNode root, TreeNode min, TreeNode max) {
+        if (root == null) {
             return true;
         }
-        if(root.left == null && root.right == null){
-            return true;
+        if (min != null && root.val <= min.val) {
+            return false;
         }
-        if(root.left != null && root.right == null){
-            return root.val > root.left.val;
+        if (max != null && root.val >= max.val) {
+            return false;
         }
-        if(root.left == null && root.right != null){
-            return root.val < root.right.val;
-        }
-        boolean curIsValid = root.val > root.left.val && root.val < root.right.val;
-        return curIsValid && isValidBST2(root.left) && isValidBST2(root.right);
+        return traverseIsValidBST(root.left, min, root) && traverseIsValidBST(root.right, root, max);
     }
 
     public static void main(String[] args) {
