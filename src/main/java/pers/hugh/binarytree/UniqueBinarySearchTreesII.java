@@ -31,43 +31,34 @@ public class UniqueBinarySearchTreesII {
 //            /     /       \                 \
 //            2     1         2                 3
 
-    /**
-     * 递归
-     *
-     * @param n
-     * @return
-     */
+    //95. Unique Binary Search Trees II
+    //https://leetcode.com/problems/unique-binary-search-trees-ii/
+
     public List<TreeNode> generateTrees(int n) {
-        List<TreeNode> result = new ArrayList<>();
-        if (n == 0) {
-            return result;
-        }
         return generate(1, n);
     }
 
-    public List<TreeNode> generate(int start, int end) {
-
-        List<TreeNode> result = new ArrayList<>();
-        if(start > end){
-            result.add(null);
-            return result;
+    public List<TreeNode> generate(int low, int high) {
+        List<TreeNode> res = new ArrayList<>();
+        if (low > high) {
+            res.add(null);
+            return res;
         }
-
-        for (int i = start; i <= end; i++) {
-            List<TreeNode> l = generate(start, i - 1);
-            List<TreeNode> r = generate(i + 1, end);
-
-            for (TreeNode ll : l) {
-                for (TreeNode rr : r) {
-                    TreeNode node = new TreeNode(i);
-                    node.left = ll;
-                    node.right = rr;
-                    result.add(node);
+        if (low == high) {
+            res.add(new TreeNode(low));
+            return res;
+        }
+        for (int i = low; i <= high; i++) {
+            List<TreeNode> leftList = generate(low, i - 1);
+            List<TreeNode> rightList = generate(i + 1, high);
+            for (TreeNode left : leftList) {
+                for (TreeNode right : rightList) {
+                    TreeNode root = new TreeNode(i, left, right);
+                    res.add(root);
                 }
             }
         }
-
-        return result;
+        return res;
     }
 
     public static void main(String[] args) {

@@ -46,7 +46,7 @@ public class ValidateBinarySearchTree {
         }
     }
 
-    //有问题
+    //尚未完全理解
     public boolean isValidBST2(TreeNode root) {
         return traverseIsValidBST(root, null, null);
     }
