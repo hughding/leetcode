@@ -13,25 +13,25 @@ public class AllPathsFromSourceToTarget {
     //https://leetcode.com/problems/all-paths-from-source-to-target/
 
     private List<List<Integer>> res;
-    private LinkedList<Integer> onPath;
+    private LinkedList<Integer> path;
 
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         this.res = new ArrayList<>();
-        this.onPath = new LinkedList<>();
+        this.path = new LinkedList<>();
         traverse(graph, 0);
         return res;
     }
 
     private void traverse(int[][] graph, int cur) {
-        onPath.add(cur);
+        path.add(cur);
         if (cur == graph.length - 1) {
-            List<Integer> resItem = new ArrayList<>(onPath);
+            List<Integer> resItem = new ArrayList<>(path);
             res.add(resItem);
         }
         for (int i = 0; i < graph[cur].length; i++) {
             traverse(graph, graph[cur][i]);
         }
-        onPath.removeLast();
+        path.removeLast();
     }
 
     public static void main(String[] args) {
