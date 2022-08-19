@@ -76,8 +76,8 @@ public class SatisfiabilityOfEqualityEquations {
 
     public static void main(String[] args) {
         SatisfiabilityOfEqualityEquations solution = new SatisfiabilityOfEqualityEquations();
-//        System.out.println(solution.equationsPossible(new String[]{"a==b", "b!=a"}));
-//        System.out.println(solution.equationsPossible(new String[]{"b==a", "a==b"}));
+        System.out.println(solution.equationsPossible(new String[]{"a==b", "b!=a"}));
+        System.out.println(solution.equationsPossible(new String[]{"b==a", "a==b"}));
         System.out.println(solution.equationsPossible(new String[]{"f==a", "a==b", "f!=e", "a==c", "b==e", "c==f"}));
     }
 }
